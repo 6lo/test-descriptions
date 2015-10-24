@@ -29,6 +29,7 @@ strings:
 TD_6Lo_FORMAT_01:
   obj: Check that EUTs correctly handle uncompressed 6LoWPAN packets (EUI-64 link-local)
   cfg: *nn
+  lev: basic
   tec: 6LoWPAN only
   ref: RFC 4944 5.1, 8; RFC 6775 5.6
   pre:
@@ -53,6 +54,7 @@ TD_6Lo_FORMAT_01:
 TD_6Lo_FORMAT_07:
   obj: Check that EUTs correctly handle uncompressed 6LoWPAN packets (EUI-64 to 16-bit short link-local)
   cfg: *nn
+  lev: basic
   tec: 6LoWPAN only
   ref: RFC 4944 5.1, 8; RFC 6775 5.6
   pre:
@@ -79,6 +81,7 @@ TD_6Lo_FORMAT_07:
 TD_6Lo_FORMAT_06:
   obj: Check that EUTs correctly handle uncompressed 6LoWPAN multicast to all-nodes (EUI-64 link-local)
   cfg: *nn
+  lev: basic
   tec: 6LoWPAN only
   ref: RFC 4944 5.1, 8; RFC 6775 5.6
   pre:
@@ -98,6 +101,7 @@ TD_6Lo_FORMAT_06:
 TD_6Lo_ND_01:
   obj: Check that a host is able to register its global IPv6 address (EUI-64 or other long address)
   cfg: *hr
+  lev: basic
   tec: *longtec
   ref: RFC 6775 10.2
   pre: &prend01
@@ -132,10 +136,12 @@ TD_6Lo_ND_01:
     - f: *hl10
     - v: The Router receives the Echo Reply message from the Host
   not: *replyhl
+  big: yes
 
 TD_6Lo_ND_06:
   obj: Check host behavior under multiple prefixes (EUI-64 or other long address)
   cfg: *hr
+  lev: advanced
   tec: *longtec
   ref: RFC 4861 3.1
   pre:
@@ -173,12 +179,14 @@ TD_6Lo_ND_06:
   not:
     - Optional, as not all 6lrs and hosts allow multiple prefixes
     - *replyhl
+  big: yes
 
 
 
 TD_6Lo_HC_01:
   obj: Check that EUTs correctly handle compressed 6LoWPAN packets (EUI-64 or other long address link-local, hop limit=64)
   cfg: *nn
+  lev: basic
   tec: *longtec
   ref: RFC 6282 section 3; RFC 6775 5.6
   pre:
@@ -211,6 +219,7 @@ TD_6Lo_HC_01:
 TD_6Lo_HC_03:
   obj: Check that EUTs correctly handle compressed 6LoWPAN packets (EUI-64 or other long address link-local, hop limit=63)
   cfg: *nn
+  lev: basic
   tec: *longtec
   ref: RFC 6282 section 3; RFC 6775 5.6
   pre:
@@ -244,6 +253,7 @@ TD_6Lo_HC_03:
 TD_6Lo_HC_09:
   obj: Check that EUTs correctly handle compressed 6LoWPAN packets (EUI-64 or other long address to 16-bit or other short address link-local, hop limit=64)
   cfg: *nn
+  lev: basic
   tec: 6LoWPAN only
   ref: RFC 6282 section 3; RFC 6775 5.6
   pre:
@@ -276,6 +286,7 @@ TD_6Lo_HC_09:
 TD_6Lo_HC_05:
   obj: Check that EUTs correctly handle compressed UDP packets (EUI-64 or other long address, server port 5683)
   cfg: *hr
+  lev: basic
   tec: *longtec
   ref: RFC 6282, 4.3
   pre:
@@ -299,6 +310,7 @@ TD_6Lo_HC_05:
 TD_6Lo_HC_07:
   obj: Check that EUTs correctly handle compressed UDP packets (EUI-64 or other long address, server port 61616)
   cfg: *hr
+  lev: basic
   tec: *longtec
   ref: RFC 6282, 4.3
   pre:
@@ -318,9 +330,32 @@ TD_6Lo_HC_07:
 
   
 
+
+TD_6Lo_HC_11:
+  obj: Check that EUTs correctly handle NH=0 compressed TCP packets (EUI-64 or other long address)
+  cfg: *hr
+  lev: advanced
+  tec: *longtec
+  ref: RFC 6282, 3.1.1
+  pre:
+    - *hchr
+    - *host64
+    - A TCP server (e.g., a HTTP server) is installed on port 80 of the host
+  seq:
+    - s:
+      - 6LR initiates a TCP SYN request (connect) to Host's TCP server
+    - c: 6LR sends a 6LoWPAN packet containing the TCP SYN packet to Host
+    - c: NH=0
+    - v: Host receives the TCP SYN packet from 6LR
+    - c: Host sends a 6LoWPAN packet containing a TCP SYN/ACK message to 6LR
+    - c: NH=0
+    - v: 6LR receives the TCP SYN/ACK from Host
+
+
 TD_6Lo_ND_HC_01:
   obj: Check that EUTs make use of context 0 (EUI-64 or other long address)
   cfg: *hr
+  lev: advanced
   tec: *longtec
   ref: RFC 6775 5.4, RFC 6282 3.1.1
   pre:
@@ -352,6 +387,7 @@ TD_6Lo_ND_HC_01:
 TD_6Lo_ND_HC_03:
   obj: Check that EUTs make use of context ≠ 0 (EUI-64 or other long address)
   cfg: *hr
+  lev: advanced
   tec: *longtec
   ref: RFC 6775 5.4, RFC 6282 3.1.2
   pre:
@@ -385,6 +421,7 @@ TD_6Lo_ND_HC_03:
 TD_6Lo_FORMAT_02:
   obj: Check that EUTs correctly handle uncompressed 6LoWPAN packets (16-bit short link-local)
   cfg: *nn
+  lev: basic
   tec: 6LoWPAN only
   ref: RFC 4944 5.1, 8; RFC 6775 5.6
   pre:
@@ -409,6 +446,7 @@ TD_6Lo_FORMAT_02:
 TD_6Lo_FORMAT_08:
   obj: Check that EUTs correctly handle uncompressed 6LoWPAN packets (16-bit short to EUI-64 link-local)
   cfg: *nn
+  lev: basic
   tec: 6LoWPAN only
   ref: RFC 4944 5.1, 8; RFC 6775 5.6
   pre:
@@ -435,6 +473,7 @@ TD_6Lo_FORMAT_08:
 TD_6Lo_FORMAT_05:
   obj: Check that EUTs correctly handle uncompressed 6LoWPAN multicast to all-nodes (16-bit short link-local)
   cfg: *nn
+  lev: basic
   tec: 6LoWPAN only
   ref: RFC 4944 5.1, 8; RFC 6775 5.6
   pre:
@@ -454,6 +493,7 @@ TD_6Lo_FORMAT_05:
 TD_6Lo_ND_02:
   obj: Check that a host is able to register its global IPv6 address (16-bit or other short address)
   cfg: *hr
+  lev: basic
   tec: *shorttec
   ref: RFC 6775 10.2
   pre: &prend01
@@ -488,10 +528,12 @@ TD_6Lo_ND_02:
     - f: *hl10
     - v: The Router receives the Echo Reply message from the Host
   not: *replyhl
+  big: yes
 
 TD_6Lo_ND_07:
   obj: Check host behavior under multiple prefixes (16-bit or other short address)
   cfg: *hr
+  lev: advanced
   tec: *shorttec
   ref: RFC 4861 3.1
   pre:
@@ -529,12 +571,14 @@ TD_6Lo_ND_07:
   not:
     - Optional, as not all 6lrs and hosts allow multiple prefixes
     - *replyhl
+  big: yes
 
 
 
 TD_6Lo_HC_02:
   obj: Check that EUTs correctly handle compressed 6LoWPAN packets (16-bit or other short address link-local, hop limit=64)
   cfg: *nn
+  lev: basic
   tec: *shorttec
   ref: RFC 6282 section 3; RFC 6775 5.6
   pre:
@@ -567,6 +611,7 @@ TD_6Lo_HC_02:
 TD_6Lo_HC_04:
   obj: Check that EUTs correctly handle compressed 6LoWPAN packets (16-bit or other short address link-local, hop limit=63)
   cfg: *nn
+  lev: basic
   tec: *shorttec
   ref: RFC 6282 section 3; RFC 6775 5.6
   pre:
@@ -600,6 +645,7 @@ TD_6Lo_HC_04:
 TD_6Lo_HC_10:
   obj: Check that EUTs correctly handle compressed 6LoWPAN packets (16-bit or other short address to EUI-64 or other long address link-local, hop limit=64)
   cfg: *nn
+  lev: basic
   tec: 6LoWPAN only
   ref: RFC 6282 section 3; RFC 6775 5.6
   pre:
@@ -632,6 +678,7 @@ TD_6Lo_HC_10:
 TD_6Lo_HC_06:
   obj: Check that EUTs correctly handle compressed UDP packets (16-bit or other short address, server port 5683)
   cfg: *hr
+  lev: basic
   tec: *shorttec
   ref: RFC 6282, 4.3
   pre:
@@ -655,6 +702,7 @@ TD_6Lo_HC_06:
 TD_6Lo_HC_08:
   obj: Check that EUTs correctly handle compressed UDP packets (16-bit or other short address, server port 61616)
   cfg: *hr
+  lev: basic
   tec: *shorttec
   ref: RFC 6282, 4.3
   pre:
@@ -674,9 +722,32 @@ TD_6Lo_HC_08:
 
   
 
+
+TD_6Lo_HC_12:
+  obj: Check that EUTs correctly handle NH=0 compressed TCP packets (16-bit or other short address)
+  cfg: *hr
+  lev: advanced
+  tec: *shorttec
+  ref: RFC 6282, 3.1.1
+  pre:
+    - *hchr
+    - *host16
+    - A TCP server (e.g., a HTTP server) is installed on port 80 of the host
+  seq:
+    - s:
+      - 6LR initiates a TCP SYN request (connect) to Host's TCP server
+    - c: 6LR sends a 6LoWPAN packet containing the TCP SYN packet to Host
+    - c: NH=0
+    - v: Host receives the TCP SYN packet from 6LR
+    - c: Host sends a 6LoWPAN packet containing a TCP SYN/ACK message to 6LR
+    - c: NH=0
+    - v: 6LR receives the TCP SYN/ACK from Host
+
+
 TD_6Lo_ND_HC_02:
   obj: Check that EUTs make use of context 0 (16-bit or other short address)
   cfg: *hr
+  lev: advanced
   tec: *shorttec
   ref: RFC 6775 5.4, RFC 6282 3.1.1
   pre:
@@ -708,6 +779,7 @@ TD_6Lo_ND_HC_02:
 TD_6Lo_ND_HC_04:
   obj: Check that EUTs make use of context ≠ 0 (16-bit or other short address)
   cfg: *hr
+  lev: advanced
   tec: *shorttec
   ref: RFC 6775 5.4, RFC 6282 3.1.2
   pre:
@@ -743,6 +815,7 @@ TD_6Lo_ND_HC_04:
 TD_6Lo_FORMAT_03:
   obj: Check that EUTs correctly handle uncompressed 6LoWPAN fragmented packets
   cfg: *nn
+  lev: basic
   tec: 6LoWPAN only
   ref: RFC 4944 5.1, 5.3; RFC 6775 5.6
   pre:
@@ -775,6 +848,7 @@ TD_6Lo_FORMAT_03:
 TD_6Lo_FORMAT_04:
   obj: Check that EUTs correctly handle maximum size uncompressed 6LoWPAN fragmented packets
   cfg: *nn
+  lev: basic
   tec: 6LoWPAN only
   ref: RFC 4944 5.1, 5.3; RFC 6775 5.6
   pre:
@@ -807,6 +881,7 @@ TD_6Lo_FORMAT_04:
 TD_6Lo_FORMAT_09:
   obj: Check that EUTs correctly handle token passing/maintenance at 115.2 kbit/s and correctly handle a basic 6Lo packet (link-local)
   cfg: *bac
+  lev: basic
   tec: 6LoBAC only
   ref: BACnet Clause 9 [10], BACnet MS/TP Conformance Test [11], RFC 6282, draft-ietf-6lobac
   pre:
@@ -835,6 +910,7 @@ TD_6Lo_FORMAT_09:
 TD_6Lo_ND_03:
   obj: Check Host NUD behavior
   cfg: *hr
+  lev: basic
   tec: all
   ref: RFC 6775 5.5
   pre:
@@ -847,6 +923,7 @@ TD_6Lo_ND_03:
 TD_6Lo_ND_04:
   obj: Check 6LR NUD behavior (ICMP version)
   cfg: *hr
+  lev: basic
   tec: all
   ref: RFC 6775 5.5
   pre:
@@ -861,6 +938,7 @@ TD_6Lo_ND_04:
 TD_6Lo_ND_05:
   obj: Check 6LR NUD behavior (UDP version)
   cfg: *hr
+  lev: basic
   tec: all
   ref: RFC 6775 5.5
   pre:
