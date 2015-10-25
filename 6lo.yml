@@ -177,7 +177,7 @@ TD_6Lo_ND_06:
     - f: *hl10
     - v: The Router receives the Echo Reply message from the Host
   not:
-    - Optional, as not all 6lrs and hosts allow multiple prefixes
+    - Optional, as not all 6LRs and hosts allow multiple prefixes
     - *replyhl
   big: yes
 
@@ -350,6 +350,8 @@ TD_6Lo_HC_11:
     - c: Host sends a 6LoWPAN packet containing a TCP SYN/ACK message to 6LR
     - c: NH=0
     - v: 6LR receives the TCP SYN/ACK from Host
+  not:
+    - Optional, as not all 6LRs and hosts support TCP
 
 
 TD_6Lo_ND_HC_01:
@@ -569,7 +571,7 @@ TD_6Lo_ND_07:
     - f: *hl10
     - v: The Router receives the Echo Reply message from the Host
   not:
-    - Optional, as not all 6lrs and hosts allow multiple prefixes
+    - Optional, as not all 6LRs and hosts allow multiple prefixes
     - *replyhl
   big: yes
 
@@ -742,6 +744,8 @@ TD_6Lo_HC_12:
     - c: Host sends a 6LoWPAN packet containing a TCP SYN/ACK message to 6LR
     - c: NH=0
     - v: 6LR receives the TCP SYN/ACK from Host
+  not:
+    - Optional, as not all 6LRs and hosts support TCP
 
 
 TD_6Lo_ND_HC_02:
