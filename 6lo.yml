@@ -503,12 +503,12 @@ TD_6Lo_ND_02:
     - Host is configured to use 16-bit or other short address
   seq:
     - s: Initialize the network interface of the Host
-    - c: The Host sends a Router Solicitation to all-routers multicast address with SLLAO (EUI-64 or other long address). Source = link local based on EUI-64 or other long address
+    - c: The Host sends a Router Solicitation to all-routers multicast address with SLLAO (EUI-64 or other long address for 6LoWPAN, 16-bit or other short address elsewhere). Source = link local based on EUI-64 or other long address for 6LoWPAN, 16-bit or other short address elsewhere
     - v: The Router receives the Router Solicitation from the host.
     - c:
       - The Router sends a unicast Router Advertisement containing PIO and optionally 6COs to the host.
       - Link local addresses are used.
-      - The L bit is set (6LoBAC); the L bit is not set (NFC, LoWPANz).
+      - The L bit is set (6LoBAC); the L bit is not set (NFC, LoWPANz, 6LoWPAN).
     - v: The host receives the Router Advertisement from the router
     - c: The host configures its tentative global IPv6 address based on the PIO information in RA from the Router (16-bit or other short address)
     - c: The host registers its tentative address by sending a unicast Neighbor Solicitation containing ARO and SLLAO. Source = GP16
@@ -544,12 +544,12 @@ TD_6Lo_ND_07:
     - Router is configured with multiple prefixes
   seq:
     - s: Initialize the network interface of the Host
-    - c: The Host sends a Router Solicitation to all-routers multicast address with SLLAO (EUI-64 or other long address). Source = link local based on EUI-64 or other long address
+    - c: The Host sends a Router Solicitation to all-routers multicast address with SLLAO (EUI-64 or other long address for 6LoWPAN, 16-bit or other short address elsewhere). Source = link local based on EUI-64 or other long address for 6LoWPAN, 16-bit or other short address elsewhere
     - v: The Router receives the Router Solicitation from the host.
     - c:
       - The Router sends a unicast Router Advertisement containing PIO with multiple prefixes and optionally 6COs to the host.
       - Link local addresses are used.
-      - The L bit is set (6LoBAC); the L bit is not set (NFC, LoWPANz).
+      - The L bit is set (6LoBAC); the L bit is not set (NFC, LoWPANz, 6LoWPAN).
     - v: The host receives the Router Advertisement from the router
     - c: The host configures a number of tentative global IPv6 address based on the PIO information in RA from the Router (16-bit or other short address)
     - c: The host registers its tentative addresses by sending unicast Neighbor Solicitations containing ARO and SLLAO. Source = GP16
