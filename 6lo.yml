@@ -125,13 +125,13 @@ TD_6Lo_ND_01:
       - The Router initiates an echo request to the Host's new global address, using its own global address as the source
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 64, no traffic class or flow label is being used
-    - c: The Router sends a 6LoWPAN packet containing the Echo Request message to the Host
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: The Router sends a 6Lo packet containing the Echo Request message to the Host
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - v: The Host receives the Echo Request message from the Router
-    - c: The Host sends a 6LoWPAN packet containing the Echo Reply message to the Router
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: The Host sends a 6Lo packet containing the Echo Reply message to the Router
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - v: The Router receives the Echo Reply message from the Host
@@ -166,13 +166,13 @@ TD_6Lo_ND_06:
       - The Router initiates an echo request to one of the Host's new global addresses, using the appropriate own global address as the source
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 64, no traffic class or flow label is being used
-    - c: The Router sends a 6LoWPAN packet containing the Echo Request message to the Host
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: The Router sends a 6Lo packet containing the Echo Request message to the Host
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - v: The Host receives the Echo Request message from the Router
-    - c: The Host sends a 6LoWPAN packet containing the Echo Reply message to the Router
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: The Host sends a 6Lo packet containing the Echo Reply message to the Router
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - v: The Router receives the Echo Reply message from the Host
@@ -184,7 +184,7 @@ TD_6Lo_ND_06:
 
 
 TD_6Lo_HC_01:
-  obj: Check that EUTs correctly handle compressed 6LoWPAN packets (EUI-64 or other long address link-local, hop limit=64)
+  obj: Check that EUTs correctly handle compressed 6Lo packets (EUI-64 or other long address link-local, hop limit=64)
   cfg: *nn
   lev: basic
   tec: *longtec
@@ -198,14 +198,14 @@ TD_6Lo_HC_01:
       - EUT1 initiates an echo request to EUT2's link-local address
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 64, no traffic class or flow label is being used
-    - c: EUT1 sends a compressed 6LoWPAN packet containing the Echo Request message to EUT2
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: EUT1 sends a compressed 6Lo packet containing the Echo Request message to EUT2
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - f: In IP_HC, SAC=0, SAM=11; DAC=0; DAM=11
     - v: EUT2 receives the Echo Request message from EUT1
-    - c: EUT2 sends a compressed 6LoWPAN packet containing the Echo Reply message to EUT1
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: EUT2 sends a compressed 6Lo packet containing the Echo Reply message to EUT1
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - f: In IP_HC, SAC=0, SAM=11; DAC=0; DAM=11
@@ -217,7 +217,7 @@ TD_6Lo_HC_01:
   
 
 TD_6Lo_HC_03:
-  obj: Check that EUTs correctly handle compressed 6LoWPAN packets (EUI-64 or other long address link-local, hop limit=63)
+  obj: Check that EUTs correctly handle compressed 6Lo packets (EUI-64 or other long address link-local, hop limit=63)
   cfg: *nn
   lev: basic
   tec: *longtec
@@ -231,14 +231,14 @@ TD_6Lo_HC_03:
       - EUT1 initiates an echo request to EUT2's link-local address
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 63, no traffic class or flow label is being used
-    - c: EUT1 sends a compressed 6LoWPAN packet containing the Echo Request message to EUT2
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: EUT1 sends a compressed 6Lo packet containing the Echo Request message to EUT2
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl00
     - f: In IP_HC, SAC=0, SAM=11; DAC=0; DAM=11
     - v: EUT2 receives the Echo Request message from EUT1
-    - c: EUT2 sends a compressed 6LoWPAN packet containing the Echo Reply message to EUT1
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: EUT2 sends a compressed 6Lo packet containing the Echo Reply message to EUT1
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl00
     - f: In IP_HC, SAC=0, SAM=11; DAC=0; DAM=11
@@ -296,10 +296,10 @@ TD_6Lo_HC_05:
   seq:
     - s:
       - 6LR initiates a CoAP Ping request to Host's CoAP Ping server
-    - c: 6LR sends a 6LoWPAN packet containing the CoAP Ping message to Host
+    - c: 6LR sends a 6Lo packet containing the CoAP Ping message to Host
     - f: NH is set, NHC is 111100x0, the source port is compressed to 8 bits (x=1) or uncompressed (x=0), the destination port is uncompressed 5683
     - v: Host receives the CoAP Ping message from 6LR
-    - c: Host sends a 6LoWPAN packet containing the CoAP Reset message to 6LR
+    - c: Host sends a 6Lo packet containing the CoAP Reset message to 6LR
     - f: NH is set, NHC is 1111000x, the source port is uncompressed 5683, the destination port is compressed to 8 bits (x=1) or uncompressed (x=0)
     - v: 6LR receives the CoAP Reset message from Host
   not: The feature tests check that best compression is used (but this is not a requirement for interoperability)
@@ -320,10 +320,10 @@ TD_6Lo_HC_07:
   seq:
     - s:
       - 6LR initiates a CoAP Ping request to Host's CoAP Ping server
-    - c: 6LR sends a 6LoWPAN packet containing the CoAP Ping message to Host
+    - c: 6LR sends a 6Lo packet containing the CoAP Ping message to Host
     - f: NH is set, NHC is 111100x1, the destination port is compressed to 4 bits of 0000 (x=1) or 8 bits of 0xb0 (x=0)
     - v: Host receives the CoAP Ping message from 6LR
-    - c: Host sends a 6LoWPAN packet containing the CoAP Reset message to 6LR
+    - c: Host sends a 6Lo packet containing the CoAP Reset message to 6LR
     - f: NH is set, NHC is 1111001x, the source port is compressed to 4 bits of 0000 (x=1) or 8 bits of 0xb0 (x=0)
     - v: 6LR receives the CoAP Reset message from Host
   not: The feature tests check that best compression is used (but this is not a requirement for interoperability)
@@ -344,10 +344,10 @@ TD_6Lo_HC_11:
   seq:
     - s:
       - 6LR initiates a TCP SYN request (connect) to Host's TCP server
-    - c: 6LR sends a 6LoWPAN packet containing the TCP SYN packet to Host
+    - c: 6LR sends a 6Lo packet containing the TCP SYN packet to Host
     - c: NH=0
     - v: Host receives the TCP SYN packet from 6LR
-    - c: Host sends a 6LoWPAN packet containing a TCP SYN/ACK message to 6LR
+    - c: Host sends a 6Lo packet containing a TCP SYN/ACK message to 6LR
     - c: NH=0
     - v: 6LR receives the TCP SYN/ACK from Host
   not:
@@ -370,18 +370,18 @@ TD_6Lo_ND_HC_01:
       - EUT1 initiates an echo request to EUT2's GP64 address
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 64, no traffic class or flow label is being used
-    - c: EUT1 sends a 6LoWPAN packet containing the Echo Request message to EUT2
+    - c: EUT1 sends a 6Lo packet containing the Echo Request message to EUT2
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - f: The compression makes use of the global prefix (SAC/DAC = 1, SAM/DAM=01/11)
     - f: The context identifier extension is not present (CID = 0)
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - v: EUT2 receives the Echo Request message from EUT1
-    - c: EUT2 sends a compressed 6LoWPAN packet containing the Echo Reply message to EUT1
+    - c: EUT2 sends a compressed 6Lo packet containing the Echo Reply message to EUT1
     - f: *hl10
     - f: The compression makes use of the global prefix (SAC/DAC = 1, SAM/DAM=01/11)
     - f: The context identifier extension is not present (CID = 0)
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
   not:
     - The feature tests check that good compression is used (but this is not a requirement for interoperability)
     - *replyhl
@@ -402,18 +402,18 @@ TD_6Lo_ND_HC_03:
       - EUT1 initiates an echo request to EUT2's GP64 address
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 64, no traffic class or flow label is being used
-    - c: EUT1 sends a 6LoWPAN packet containing the Echo Request message to EUT2
+    - c: EUT1 sends a 6Lo packet containing the Echo Request message to EUT2
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - f: The compression makes use of the global prefix (SAC/DAC = 1, SAM/DAM=01/11)
     - c: A Context Identifier Extension (CID) is used for this
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - v: EUT2 receives the Echo Request message from EUT1
-    - c: EUT2 sends a compressed 6LoWPAN packet containing the Echo Reply message to EUT1
+    - c: EUT2 sends a compressed 6Lo packet containing the Echo Reply message to EUT1
     - f: *hl10
     - f: The compression makes use of the global prefix (SAC/DAC = 1, SAM/DAM=01/11)
     - c: A Context Identifier Extension (CID) is used for this
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
   not:
     - The feature tests check that good compression is used (but this is not a requirement for interoperability)
     - *replyhl
@@ -519,13 +519,13 @@ TD_6Lo_ND_02:
       - The Router initiates an echo request to the Host's new global address, using its own global address as the source
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 64, no traffic class or flow label is being used
-    - c: The Router sends a 6LoWPAN packet containing the Echo Request message to the Host
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: The Router sends a 6Lo packet containing the Echo Request message to the Host
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - v: The Host receives the Echo Request message from the Router
-    - c: The Host sends a 6LoWPAN packet containing the Echo Reply message to the Router
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: The Host sends a 6Lo packet containing the Echo Reply message to the Router
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - v: The Router receives the Echo Reply message from the Host
@@ -560,13 +560,13 @@ TD_6Lo_ND_07:
       - The Router initiates an echo request to one of the Host's new global addresses, using the appropriate own global address as the source
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 64, no traffic class or flow label is being used
-    - c: The Router sends a 6LoWPAN packet containing the Echo Request message to the Host
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: The Router sends a 6Lo packet containing the Echo Request message to the Host
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - v: The Host receives the Echo Request message from the Router
-    - c: The Host sends a 6LoWPAN packet containing the Echo Reply message to the Router
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: The Host sends a 6Lo packet containing the Echo Reply message to the Router
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - v: The Router receives the Echo Reply message from the Host
@@ -578,7 +578,7 @@ TD_6Lo_ND_07:
 
 
 TD_6Lo_HC_02:
-  obj: Check that EUTs correctly handle compressed 6LoWPAN packets (16-bit or other short address link-local, hop limit=64)
+  obj: Check that EUTs correctly handle compressed 6Lo packets (16-bit or other short address link-local, hop limit=64)
   cfg: *nn
   lev: basic
   tec: *shorttec
@@ -592,14 +592,14 @@ TD_6Lo_HC_02:
       - EUT1 initiates an echo request to EUT2's link-local address
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 64, no traffic class or flow label is being used
-    - c: EUT1 sends a compressed 6LoWPAN packet containing the Echo Request message to EUT2
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: EUT1 sends a compressed 6Lo packet containing the Echo Request message to EUT2
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - f: In IP_HC, SAC=0, SAM=11; DAC=0; DAM=11
     - v: EUT2 receives the Echo Request message from EUT1
-    - c: EUT2 sends a compressed 6LoWPAN packet containing the Echo Reply message to EUT1
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: EUT2 sends a compressed 6Lo packet containing the Echo Reply message to EUT1
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - f: In IP_HC, SAC=0, SAM=11; DAC=0; DAM=11
@@ -611,7 +611,7 @@ TD_6Lo_HC_02:
   
 
 TD_6Lo_HC_04:
-  obj: Check that EUTs correctly handle compressed 6LoWPAN packets (16-bit or other short address link-local, hop limit=63)
+  obj: Check that EUTs correctly handle compressed 6Lo packets (16-bit or other short address link-local, hop limit=63)
   cfg: *nn
   lev: basic
   tec: *shorttec
@@ -625,14 +625,14 @@ TD_6Lo_HC_04:
       - EUT1 initiates an echo request to EUT2's link-local address
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 63, no traffic class or flow label is being used
-    - c: EUT1 sends a compressed 6LoWPAN packet containing the Echo Request message to EUT2
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: EUT1 sends a compressed 6Lo packet containing the Echo Request message to EUT2
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl00
     - f: In IP_HC, SAC=0, SAM=11; DAC=0; DAM=11
     - v: EUT2 receives the Echo Request message from EUT1
-    - c: EUT2 sends a compressed 6LoWPAN packet containing the Echo Reply message to EUT1
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: EUT2 sends a compressed 6Lo packet containing the Echo Reply message to EUT1
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl00
     - f: In IP_HC, SAC=0, SAM=11; DAC=0; DAM=11
@@ -690,10 +690,10 @@ TD_6Lo_HC_06:
   seq:
     - s:
       - 6LR initiates a CoAP Ping request to Host's CoAP Ping server
-    - c: 6LR sends a 6LoWPAN packet containing the CoAP Ping message to Host
+    - c: 6LR sends a 6Lo packet containing the CoAP Ping message to Host
     - f: NH is set, NHC is 111100x0, the source port is compressed to 8 bits (x=1) or uncompressed (x=0), the destination port is uncompressed 5683
     - v: Host receives the CoAP Ping message from 6LR
-    - c: Host sends a 6LoWPAN packet containing the CoAP Reset message to 6LR
+    - c: Host sends a 6Lo packet containing the CoAP Reset message to 6LR
     - f: NH is set, NHC is 1111000x, the source port is uncompressed 5683, the destination port is compressed to 8 bits (x=1) or uncompressed (x=0)
     - v: 6LR receives the CoAP Reset message from Host
   not: The feature tests check that best compression is used (but this is not a requirement for interoperability)
@@ -714,10 +714,10 @@ TD_6Lo_HC_08:
   seq:
     - s:
       - 6LR initiates a CoAP Ping request to Host's CoAP Ping server
-    - c: 6LR sends a 6LoWPAN packet containing the CoAP Ping message to Host
+    - c: 6LR sends a 6Lo packet containing the CoAP Ping message to Host
     - f: NH is set, NHC is 111100x1, the destination port is compressed to 4 bits of 0000 (x=1) or 8 bits of 0xb0 (x=0)
     - v: Host receives the CoAP Ping message from 6LR
-    - c: Host sends a 6LoWPAN packet containing the CoAP Reset message to 6LR
+    - c: Host sends a 6Lo packet containing the CoAP Reset message to 6LR
     - f: NH is set, NHC is 1111001x, the source port is compressed to 4 bits of 0000 (x=1) or 8 bits of 0xb0 (x=0)
     - v: 6LR receives the CoAP Reset message from Host
   not: The feature tests check that best compression is used (but this is not a requirement for interoperability)
@@ -738,10 +738,10 @@ TD_6Lo_HC_12:
   seq:
     - s:
       - 6LR initiates a TCP SYN request (connect) to Host's TCP server
-    - c: 6LR sends a 6LoWPAN packet containing the TCP SYN packet to Host
+    - c: 6LR sends a 6Lo packet containing the TCP SYN packet to Host
     - c: NH=0
     - v: Host receives the TCP SYN packet from 6LR
-    - c: Host sends a 6LoWPAN packet containing a TCP SYN/ACK message to 6LR
+    - c: Host sends a 6Lo packet containing a TCP SYN/ACK message to 6LR
     - c: NH=0
     - v: 6LR receives the TCP SYN/ACK from Host
   not:
@@ -764,18 +764,18 @@ TD_6Lo_ND_HC_02:
       - EUT1 initiates an echo request to EUT2's GP16 address
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 64, no traffic class or flow label is being used
-    - c: EUT1 sends a 6LoWPAN packet containing the Echo Request message to EUT2
+    - c: EUT1 sends a 6Lo packet containing the Echo Request message to EUT2
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - f: The compression makes use of the global prefix (SAC/DAC = 1, SAM/DAM=10/11)
     - f: The context identifier extension is not present (CID = 0)
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - v: EUT2 receives the Echo Request message from EUT1
-    - c: EUT2 sends a compressed 6LoWPAN packet containing the Echo Reply message to EUT1
+    - c: EUT2 sends a compressed 6Lo packet containing the Echo Reply message to EUT1
     - f: *hl10
     - f: The compression makes use of the global prefix (SAC/DAC = 1, SAM/DAM=10/11)
     - f: The context identifier extension is not present (CID = 0)
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
   not:
     - The feature tests check that good compression is used (but this is not a requirement for interoperability)
     - *replyhl
@@ -796,18 +796,18 @@ TD_6Lo_ND_HC_04:
       - EUT1 initiates an echo request to EUT2's GP16 address
       - ICMP payload = 4 bytes, total IPv6 size 52 bytes
       - Hop Limit is 64, no traffic class or flow label is being used
-    - c: EUT1 sends a 6LoWPAN packet containing the Echo Request message to EUT2
+    - c: EUT1 sends a 6Lo packet containing the Echo Request message to EUT2
     - f: In IP_HC, TF is 11 and the ecn, dscp and flow label fields are compressed away
     - f: *hl10
     - f: The compression makes use of the global prefix (SAC/DAC = 1, SAM/DAM=10/11)
     - c: A Context Identifier Extension (CID) is used for this
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
     - v: EUT2 receives the Echo Request message from EUT1
-    - c: EUT2 sends a compressed 6LoWPAN packet containing the Echo Reply message to EUT1
+    - c: EUT2 sends a compressed 6Lo packet containing the Echo Reply message to EUT1
     - f: *hl10
     - f: The compression makes use of the global prefix (SAC/DAC = 1, SAM/DAM=10/11)
     - c: A Context Identifier Extension (CID) is used for this
-    - c: Dispatch value in 6LowPAN packet is “011TFxHL”
+    - c: Dispatch value in 6Lo packet is “011TFxHL”
   not:
     - The feature tests check that good compression is used (but this is not a requirement for interoperability)
     - *replyhl
