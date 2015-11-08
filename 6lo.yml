@@ -238,9 +238,9 @@ TD_6Lo_HC_03:
     - The feature tests check that best compression is used (but this is not a requirement for interoperability)
     - *replyhl
 
-  
 
-  
+
+
 TD_6Lo_HC_09:
   obj: Check that EUTs correctly handle compressed 6LoWPAN packets (EUI-64 or other long address to 16-bit or other short address link-local, hop limit=64)
   cfg: *nn
@@ -293,7 +293,7 @@ TD_6Lo_HC_05:
     - v: 6LR receives the CoAP Reset message from Host
   not: The feature tests check that best compression is used (but this is not a requirement for interoperability)
 
-  
+
 
 
 TD_6Lo_HC_07:
@@ -316,7 +316,7 @@ TD_6Lo_HC_07:
     - v: 6LR receives the CoAP Reset message from Host
   not: The feature tests check that best compression is used (but this is not a requirement for interoperability)
 
-  
+
 
 TD_6Lo_ND_HC_01:
   obj: Check that EUTs make use of context 0 (EUI-64 or other long address)
@@ -450,7 +450,7 @@ TD_6Lo_FORMAT_05:
     - v: EUT1 receives the Echo Reply message from EUT2
     - c: The data in the echo reply message is identical to that in the echo request message
 
-      
+
 TD_6Lo_ND_02:
   obj: Check that a host is able to register its global IPv6 address (16-bit or other short address)
   cfg: *hr
@@ -562,7 +562,7 @@ TD_6Lo_HC_02:
     - The feature tests check that best compression is used (but this is not a requirement for interoperability)
     - *replyhl
 
-  
+
 
 TD_6Lo_HC_04:
   obj: Check that EUTs correctly handle compressed 6LoWPAN packets (16-bit or other short address link-local, hop limit=63)
@@ -594,9 +594,9 @@ TD_6Lo_HC_04:
     - The feature tests check that best compression is used (but this is not a requirement for interoperability)
     - *replyhl
 
-  
 
-  
+
+
 TD_6Lo_HC_10:
   obj: Check that EUTs correctly handle compressed 6LoWPAN packets (16-bit or other short address to EUI-64 or other long address link-local, hop limit=64)
   cfg: *nn
@@ -649,7 +649,7 @@ TD_6Lo_HC_06:
     - v: 6LR receives the CoAP Reset message from Host
   not: The feature tests check that best compression is used (but this is not a requirement for interoperability)
 
-  
+
 
 
 TD_6Lo_HC_08:
@@ -672,7 +672,7 @@ TD_6Lo_HC_08:
     - v: 6LR receives the CoAP Reset message from Host
   not: The feature tests check that best compression is used (but this is not a requirement for interoperability)
 
-  
+
 
 TD_6Lo_ND_HC_02:
   obj: Check that EUTs make use of context 0 (16-bit or other short address)
